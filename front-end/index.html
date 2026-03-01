@@ -62,21 +62,26 @@
         <div class="flex items-center gap-2">
           <div class="size-8 text-primary">
             <svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-              <path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z" fill="currentColor">
-              </path>
+              
             </svg>
           </div>
-          <span class="text-2xl font-black tracking-tighter text-white" >VELOCITA</span>
+          <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+            <span class="material-symbols-outlined block text-black">electric_car</span>
+          </div>
+          <span class="text-2xl font-black tracking-tighter text-white">VELOCITA</span>
         </div>
         <nav class="hidden md:flex items-center gap-10">
           <a class="text-sm font-semibold text-primary" href="#">Home</a>
-          <a class="text-sm font-semibold hover:text-primary transition-colors" href="#" >Cars</a>
-          <a class="text-sm font-semibold hover:text-primary transition-colors" href="#" >About</a>
-          <a class="text-sm font-semibold hover:text-primary transition-colors" href="#" >Contact</a >
+          <a class="text-sm font-semibold hover:text-primary transition-colors" href="carlisting.html" >Cars</a>
+          <a class="text-sm font-semibold hover:text-primary transition-colors" href="about.html" >About</a>
+          <a class="text-sm font-semibold hover:text-primary transition-colors" href="contact-us.html" >Contact</a >
         </nav>
-        <button class="bg-primary text-background-dark px-6 py-2.5 rounded-full font-bold text-sm hover:opacity-90 transition-all">
+        <a
+            href="login.html"
+            class="bg-primary text-background-dark px-6 py-2.5 rounded-full font-bold text-sm hover:opacity-90 transition-all"
+          >
             Login/Signup
-        </button>
+          </a>
       </div>
     </header>
     <!-- Hero Section -->
@@ -555,18 +560,9 @@
         >
           <div class="max-w-md space-y-6">
             <div class="flex items-center gap-2">
-              <div class="size-8 text-primary">
-                <svg
-                  fill="none"
-                  viewbox="0 0 48 48"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z"
-                    fill="currentColor"
-                  ></path>
-                </svg>
-              </div>
+              <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+            <span class="material-symbols-outlined block text-black">electric_car</span>
+          </div>
               <span class="text-2xl font-black tracking-tighter text-white"
                 >VELOCITA</span
               >
@@ -615,18 +611,13 @@
                     >Offers</a
                   >
                 </li>
-                <li>
-                  <a class="hover:text-primary transition-colors" href="#"
-                    >Mobile App</a
-                  >
-                </li>
               </ul>
             </div>
             <div class="space-y-4">
               <h4 class="text-white font-bold">Company</h4>
               <ul class="space-y-2 text-slate-400 text-sm">
                 <li>
-                  <a class="hover:text-primary transition-colors" href="#"
+                  <a class="hover:text-primary transition-colors" href="about.html"
                     >About Us</a
                   >
                 </li>
@@ -647,7 +638,7 @@
                 </li>
               </ul>
             </div>
-            <div class="space-y-6">
+            <!-- <div class="space-y-6">
               <h4 class="text-white font-bold">Newsletter</h4>
               <div
                 class="flex gap-2 p-1 bg-white/5 rounded-full border border-white/10"
@@ -665,7 +656,7 @@
                   >
                 </button>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
         <div

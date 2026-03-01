@@ -1,0 +1,786 @@
+<!doctype html>
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#66ffdb",
+              "background-light": "#f5f8f8",
+              "background-dark": "#0f231e",
+            },
+            fontFamily: {
+              display: ["Inter"],
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+              lg: "2rem",
+              xl: "3rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .glass {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .glass-dark {
+        background: rgba(15, 35, 30, 0.7);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(102, 255, 219, 0.1);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen"
+  >
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+      <header class="fixed top-0 w-full z-50 glass border-b border-primary/10">
+        <div
+          class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between"
+        >
+          <div class="flex items-center gap-2">
+            <div class="size-8 text-primary">
+              <svg
+                fill="none"
+                viewbox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg"
+              ></svg>
+            </div>
+            <div
+              class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+            >
+              <span class="material-symbols-outlined block text-black"
+                >electric_car</span
+              >
+            </div>
+            <span class="text-2xl font-black tracking-tighter text-white"
+              >VELOCITA</span
+            >
+          </div>
+          <nav class="hidden md:flex items-center gap-10">
+            <a
+              class="text-sm font-semibold hover:text-primary transition-colors"
+              href="index.html"
+              >Home</a
+            >
+            <a
+              class="text-sm font-semibold hover:text-primary text-primary"
+              href="carlisting.html"
+              >Cars</a
+            >
+            <a
+              class="text-sm font-semibold hover:text-primary transition-colors"
+              href="about.html"
+              >About</a
+            >
+            <a
+              class="text-sm font-semibold hover:text-primary transition-colors"
+              href="contact-us.html"
+              >Contact</a
+            >
+          </nav>
+          <a
+            href="login.html"
+            class="bg-primary text-background-dark px-6 py-2.5 rounded-full font-bold text-sm hover:opacity-90 transition-all"
+          >
+            Login/Signup
+          </a>
+        </div>
+      </header>
+      <main class="flex-1 max-w-7xl mx-auto w-full px-6 py-8 lg:px-20">
+        <div class="flex flex-col lg:flex-row gap-8">
+          <aside class="w-full lg:w-72 flex-shrink-0 space-y-8">
+            <div class="glass-dark rounded-xl p-6 border border-primary/10">
+              <h3 class="text-lg font-bold mb-6 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">tune</span>
+                Filters
+              </h3>
+              <div class="space-y-6">
+                <div>
+                  <label
+                    class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4 block"
+                    >Price Range ($/day)</label
+                  >
+                  <div class="relative pt-1 px-1">
+                    <div
+                      class="h-1.5 w-full bg-primary/10 rounded-full overflow-hidden relative"
+                    >
+                      <div
+                        class="absolute inset-y-0 left-0 right-1/4 bg-primary"
+                      ></div>
+                    </div>
+                    <div class="flex justify-between mt-3">
+                      <span class="text-xs font-semibold">$50</span>
+                      <span
+                        class="text-xs font-semibold bg-primary text-background-dark px-2 py-0.5 rounded"
+                        >$450</span
+                      >
+                      <span class="text-xs font-semibold">$1000</span>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <label
+                    class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4 block"
+                    >Car Type</label
+                  >
+                  <div class="grid grid-cols-2 gap-2">
+                    <button
+                      class="text-xs font-semibold py-2 px-3 rounded bg-primary text-background-dark border border-primary"
+                    >
+                      All
+                    </button>
+                    <button
+                      class="text-xs font-semibold py-2 px-3 rounded bg-primary/5 hover:bg-primary/10 border border-primary/10"
+                    >
+                      SUV
+                    </button>
+                    <button
+                      class="text-xs font-semibold py-2 px-3 rounded bg-primary/5 hover:bg-primary/10 border border-primary/10"
+                    >
+                      Sedan
+                    </button>
+                    <button
+                      class="text-xs font-semibold py-2 px-3 rounded bg-primary/5 hover:bg-primary/10 border border-primary/10"
+                    >
+                      Sports
+                    </button>
+                    <button
+                      class="text-xs font-semibold py-2 px-3 rounded bg-primary/5 hover:bg-primary/10 border border-primary/10"
+                    >
+                      Luxury
+                    </button>
+                    <button
+                      class="text-xs font-semibold py-2 px-3 rounded bg-primary/5 hover:bg-primary/10 border border-primary/10"
+                    >
+                      Electric
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  <label
+                    class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4 block"
+                    >Fuel Type</label
+                  >
+                  <div class="space-y-2">
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                      <input
+                        checked=""
+                        class="form-checkbox bg-transparent border-primary/30 text-primary rounded focus:ring-primary/20"
+                        type="checkbox"
+                      />
+                      <span
+                        class="text-sm group-hover:text-primary transition-colors"
+                        >Electric</span
+                      >
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                      <input
+                        class="form-checkbox bg-transparent border-primary/30 text-primary rounded focus:ring-primary/20"
+                        type="checkbox"
+                      />
+                      <span
+                        class="text-sm group-hover:text-primary transition-colors"
+                        >Petrol</span
+                      >
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                      <input
+                        checked=""
+                        class="form-checkbox bg-transparent border-primary/30 text-primary rounded focus:ring-primary/20"
+                        type="checkbox"
+                      />
+                      <span
+                        class="text-sm group-hover:text-primary transition-colors"
+                        >Hybrid</span
+                      >
+                    </label>
+                  </div>
+                </div>
+                <div>
+                  <label
+                    class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4 block"
+                    >Transmission</label
+                  >
+                  <div class="flex gap-2">
+                    <button
+                      class="flex-1 text-xs font-semibold py-2 rounded bg-primary text-background-dark border border-primary"
+                    >
+                      Automatic
+                    </button>
+                    <button
+                      class="flex-1 text-xs font-semibold py-2 rounded bg-primary/5 hover:bg-primary/10 border border-primary/10"
+                    >
+                      Manual
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <button
+                class="w-full mt-8 bg-primary/10 hover:bg-primary/20 text-primary font-bold py-3 rounded transition-all"
+              >
+                Clear All
+              </button>
+            </div>
+          </aside>
+          <section class="flex-1">
+            <div
+              class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8"
+            >
+              <div>
+                <h1 class="text-3xl font-black italic uppercase tracking-tight">
+                  Available Rides
+                </h1>
+                <p class="text-slate-500 text-sm">
+                  Discover over 124 premium vehicles ready for the road.
+                </p>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="text-sm font-semibold text-slate-500"
+                  >Sort By:</span
+                >
+                <div class="relative inline-block">
+                  <select
+                    class="bg-primary/5 border border-primary/10 rounded-full px-6 py-2 text-sm font-semibold focus:ring-primary focus:border-primary appearance-none cursor-pointer pr-10"
+                  >
+                    <option>Popularity</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                    <option>Top Rated</option>
+                  </select>
+                  <span
+                    class="material-symbols-outlined absolute right-3 top-2.5 text-primary text-sm pointer-events-none"
+                    >expand_more</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+              <div
+                class="glass-dark rounded-xl overflow-hidden group border border-primary/5 hover:border-primary/30 transition-all"
+              >
+                <div class="relative h-48 overflow-hidden">
+                  <img
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    data-alt="Sleek silver Tesla Model 3 exterior"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoSDATR3GzDzUCkKIsCCoXKMYmMNwo0tDovhD1lYyjMmMaWgfx16DoWXkDnAL3HVVCDqvmwB8UW0T2T8sz_xZmt5hdwdaHKURqR5dOXicvHpzQhQvYw3yWmBS9CZCG_GBy0X98zbUitMOm43Kn7x2ayCbNS-upElUS1noJ4hdpjPgAFvfnVEFr_zPKtoh-SXD_xKX2o6mqr58j2ewOUZItT0I9VMupPmXkzRrUGi8YHyTSxwVcZcqdvlxZTlIZeovfgbwRyKS8JjM"
+                  />
+                  <div
+                    class="absolute top-3 right-3 glass px-2 py-1 rounded flex items-center gap-1"
+                  >
+                    <span
+                      class="material-symbols-outlined text-yellow-400 text-sm fill-current"
+                      >star</span
+                    >
+                    <span class="text-xs font-bold text-white">4.9</span>
+                  </div>
+                </div>
+                <div class="p-5">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-lg font-bold">Tesla Model 3 Performance</h3>
+                    <span class="text-primary font-black"
+                      >$80<span
+                        class="text-[10px] text-slate-500 uppercase font-normal tracking-wider"
+                        >/day</span
+                      ></span
+                    >
+                  </div>
+                  <div class="flex items-center gap-4 text-slate-400 mb-6">
+                    <div class="flex items-center gap-1">
+                      <span class="material-symbols-outlined text-sm"
+                        >airline_seat_recline_extra</span
+                      >
+                      <span class="text-xs">4 Seats</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                      <span class="material-symbols-outlined text-sm"
+                        >ev_station</span
+                      >
+                      <span class="text-xs">Electric</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                      <span class="material-symbols-outlined text-sm"
+                        >settings_input_component</span
+                      >
+                      <span class="text-xs">Auto</span>
+                    </div>
+                  </div>
+                  <button
+                    class="w-full bg-primary text-background-dark font-bold py-2.5 rounded hover:shadow-[0_0_20px_rgba(102,255,219,0.3)] transition-all"
+                  >
+                    Rent Now
+                  </button>
+                </div>
+              </div>
+              <div
+                class="glass-dark rounded-xl overflow-hidden group border border-primary/5 hover:border-primary/30 transition-all"
+              >
+                <div class="relative h-48 overflow-hidden">
+                  <img
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    data-alt="Blue Porsche 911 on city street"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwP0LU48VEvgsgQRKu3fpht0sCXALFVscca3HshqqjAlZY6rgk71CR0DWcMTVOlXAEvUEsmXZyuIZnu44a6RCFDnvlPA8tbOTpbjSiQttDbiEZ6BUmlotsrwQnyemyid6AcKB9R_Z12rT_z2JBqukRgUjIblQgKR7LHCWFNhaglLfyUq7xXwbOco3aHWseflWYElJXP8L2-VuUUSxF-qBQrG1hXByKH8GRDK88exv-HtmTNTBQNUXivnekFxw4aHJf1TFWOmm3sPk"
+                  />
+                  <div
+                    class="absolute top-3 right-3 glass px-2 py-1 rounded flex items-center gap-1"
+                  >
+                    <span
+                      class="material-symbols-outlined text-yellow-400 text-sm fill-current"
+                      >star</span
+                    >
+                    <span class="text-xs font-bold text-white">5.0</span>
+                  </div>
+                </div>
+                <div class="p-5">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-lg font-bold">Porsche 911 Carrera</h3>
+                    <span class="text-primary font-black"
+                      >$120<span
+                        class="text-[10px] text-slate-500 uppercase font-normal tracking-wider"
+                        >/day</span
+                      ></span
+                    >
+                  </div>
+                  <div class="flex items-center gap-4 text-slate-400 mb-6">
+                    <div class="flex items-center gap-1">
+                      <span class="material-symbols-outlined text-sm"
+                        >airline_seat_recline_extra</span
+                      >
+                      <span class="text-xs">2 Seats</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                      <span class="material-symbols-outlined text-sm"
+                        >local_gas_station</span
+                      >
+                      <span class="text-xs">Petrol</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                      <span class="material-symbols-outlined text-sm"
+                        >settings_input_component</span
+                      >
+                      <span class="text-xs">Manual</span>
+                    </div>
+                  </div>
+                  <button
+                    class="w-full bg-primary text-background-dark font-bold py-2.5 rounded hover:shadow-[0_0_20px_rgba(102,255,219,0.3)] transition-all"
+                  >
+                    Rent Now
+                  </button>
+                </div>
+              </div>
+              <div
+                class="glass-dark rounded-xl overflow-hidden group border border-primary/5 hover:border-primary/30 transition-all"
+              >
+                <div class="relative h-48 overflow-hidden">
+                  <img
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    data-alt="Black Audi SUV driving in mountains"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuByHgR4HIv6g5u9sawRNXAHBzJPYZ7n6g6hT5MpE-RJwTHF-AJS0S2hS1jJPLLI-UlEYnCIIhCKhA1T5flFdniOAAar9kQbpjgPSWsH9UMZYY220rX7o7CJhfnACMjBoPq3C6qlCsSnWUNE8DrMuTAD_zuldT2ajDzSn7ZAgUj-CdrDH2OMeZPqEa8oi9Eo2SEcqYNJGPzR1M_iNirqzlqOgzFoWcQYR6lcCYhYLAG5OB_Ede9nyEjFa5cF6HStQY96qIecRfOReCQ"
+                  />
+                  <div
+                    class="absolute top-3 right-3 glass px-2 py-1 rounded flex items-center gap-1"
+                  >
+                    <span
+                      class="material-symbols-outlined text-yellow-400 text-sm fill-current"
+                      >star</span
+                    >
+                    <span class="text-xs font-bold text-white">4.8</span>
+                  </div>
+                </div>
+                <div class="p-5">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-lg font-bold">Audi Q8 e-tron</h3>
+                    <span class="text-primary font-black"
+                      >$95<span
+                        class="text-[10px] text-slate-500 uppercase font-normal tracking-wider"
+                        >/day</span
+                      ></span
+                    >
+                  </div>
+                  <div class="flex items-center gap-4 text-slate-400 mb-6">
+                    <div class="flex items-center gap-1">
+                      <span class="material-symbols-outlined text-sm"
+                        >airline_seat_recline_extra</span
+                      >
+                      <span class="text-xs">5 Seats</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                      <span class="material-symbols-outlined text-sm"
+                        >ev_station</span
+                      >
+                      <span class="text-xs">Electric</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                      <span class="material-symbols-outlined text-sm"
+                        >settings_input_component</span
+                      >
+                      <span class="text-xs">Auto</span>
+                    </div>
+                  </div>
+                  <button
+                    class="w-full bg-primary text-background-dark font-bold py-2.5 rounded hover:shadow-[0_0_20px_rgba(102,255,219,0.3)] transition-all"
+                  >
+                    Rent Now
+                  </button>
+                </div>
+              </div>
+              <div
+                class="glass-dark rounded-xl overflow-hidden group border border-primary/5 hover:border-primary/30 transition-all"
+              >
+                <div class="relative h-48 overflow-hidden">
+                  <img
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    data-alt="Blue BMW M4 parked on concrete"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDvVU2EcXAW93kuZnecAewf-TlxzIyrG4nqYr8h1W7aJpx5E5lu6OQUJHs911XmtEdLPO7yjbDEwPwPv81wExoUT48DMLHyKS6KAYZxMCfQi7hwGOl7ADCB37hMAApEn44pMCp5LZXE_r0VR-r8oy9uQKLIZulrw24ke6LqJOkMQ7ZvCOK1V0bQR4RD8uN25bXZohx6kzAfdtfn4RreSY2wobcsay0ToxxatLM3uV-sK6g32xtkSxwgFlht8uSTu_zf-SBa2Bo_0o"
+                  />
+                  <div
+                    class="absolute top-3 right-3 glass px-2 py-1 rounded flex items-center gap-1"
+                  >
+                    <span
+                      class="material-symbols-outlined text-yellow-400 text-sm fill-current"
+                      >star</span
+                    >
+                    <span class="text-xs font-bold text-white">4.7</span>
+                  </div>
+                </div>
+                <div class="p-5">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-lg font-bold">BMW M4 Competition</h3>
+                    <span class="text-primary font-black"
+                      >$110<span
+                        class="text-[10px] text-slate-500 uppercase font-normal tracking-wider"
+                        >/day</span
+                      ></span
+                    >
+                  </div>
+                  <div class="flex items-center gap-4 text-slate-400 mb-6">
+                    <div class="flex items-center gap-1">
+                      <span class="material-symbols-outlined text-sm"
+                        >airline_seat_recline_extra</span
+                      >
+                      <span class="text-xs">4 Seats</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                      <span class="material-symbols-outlined text-sm"
+                        >local_gas_station</span
+                      >
+                      <span class="text-xs">Petrol</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                      <span class="material-symbols-outlined text-sm"
+                        >settings_input_component</span
+                      >
+                      <span class="text-xs">Auto</span>
+                    </div>
+                  </div>
+                  <button
+                    class="w-full bg-primary text-background-dark font-bold py-2.5 rounded hover:shadow-[0_0_20px_rgba(102,255,219,0.3)] transition-all"
+                  >
+                    Rent Now
+                  </button>
+                </div>
+              </div>
+              <div
+                class="glass-dark rounded-xl overflow-hidden group border border-primary/5 hover:border-primary/30 transition-all"
+              >
+                <div class="relative h-48 overflow-hidden">
+                  <img
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    data-alt="White Mercedes EQS luxury sedan"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD28BEqSH2KR96LoCORcGPQrwtSg4UAioPdM0ZLTI_mPHwviDLpEs5B9YqFUJzngWymGotY3V4H9iHsb6nCAhxGFi1ucAYHZLlxMo7rHSkBrCgNe2dVJWXcXJd8N5rSn0wft_EbPpJ2J8YtlE3SoqBP6aswEbHP9jPDPp02Efkud4rBYY6NeySy2PG_5SKU9KNpAaNO8wZrh52qY4GvVE71rVt2OfUD2ms6-9RJyBSs_Ld3-JEwI1huWrZBYq7LcsED8Ha98xqqFE0"
+                  />
+                  <div
+                    class="absolute top-3 right-3 glass px-2 py-1 rounded flex items-center gap-1"
+                  >
+                    <span
+                      class="material-symbols-outlined text-yellow-400 text-sm fill-current"
+                      >star</span
+                    >
+                    <span class="text-xs font-bold text-white">4.9</span>
+                  </div>
+                </div>
+                <div class="p-5">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-lg font-bold">Mercedes-Benz EQS</h3>
+                    <span class="text-primary font-black"
+                      >$140<span
+                        class="text-[10px] text-slate-500 uppercase font-normal tracking-wider"
+                        >/day</span
+                      ></span
+                    >
+                  </div>
+                  <div class="flex items-center gap-4 text-slate-400 mb-6">
+                    <div class="flex items-center gap-1">
+                      <span class="material-symbols-outlined text-sm"
+                        >airline_seat_recline_extra</span
+                      >
+                      <span class="text-xs">5 Seats</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                      <span class="material-symbols-outlined text-sm"
+                        >ev_station</span
+                      >
+                      <span class="text-xs">Electric</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                      <span class="material-symbols-outlined text-sm"
+                        >settings_input_component</span
+                      >
+                      <span class="text-xs">Auto</span>
+                    </div>
+                  </div>
+                  <button
+                    class="w-full bg-primary text-background-dark font-bold py-2.5 rounded hover:shadow-[0_0_20px_rgba(102,255,219,0.3)] transition-all"
+                  >
+                    Rent Now
+                  </button>
+                </div>
+              </div>
+              <div
+                class="glass-dark rounded-xl overflow-hidden group border border-primary/5 hover:border-primary/30 transition-all"
+              >
+                <div class="relative h-48 overflow-hidden">
+                  <img
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    data-alt="Red Ferrari luxury sports car"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhAkYbZQPLx2lgDaevw8xFeNlYaiYMifk34guU-bYV-lztr-BgZhl12ABequ0iuiPG11FJVbtThlfaAGWCsRZAf3huk_MlmBRts00TaSSarQTkHgAUo2WoJ_i0lCS6PevsJ9DScyowrunCqX4lESxg7aQ2Oib725cnr3V6KzUIIF9qiBxkqPp3Bw2s5OxgAGcG9QrWmhrAt43DDTjGsFybjyrKjX2kyBnUD2AL7oRYF9Pz0gJ5t8EPfBrDOky9o_HTE8n0pO-UzVQ"
+                  />
+                  <div
+                    class="absolute top-3 right-3 glass px-2 py-1 rounded flex items-center gap-1"
+                  >
+                    <span
+                      class="material-symbols-outlined text-yellow-400 text-sm fill-current"
+                      >star</span
+                    >
+                    <span class="text-xs font-bold text-white">5.0</span>
+                  </div>
+                </div>
+                <div class="p-5">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-lg font-bold">Ferrari F8 Tributo</h3>
+                    <span class="text-primary font-black"
+                      >$450<span
+                        class="text-[10px] text-slate-500 uppercase font-normal tracking-wider"
+                        >/day</span
+                      ></span
+                    >
+                  </div>
+                  <div class="flex items-center gap-4 text-slate-400 mb-6">
+                    <div class="flex items-center gap-1">
+                      <span class="material-symbols-outlined text-sm"
+                        >airline_seat_recline_extra</span
+                      >
+                      <span class="text-xs">2 Seats</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                      <span class="material-symbols-outlined text-sm"
+                        >local_gas_station</span
+                      >
+                      <span class="text-xs">Petrol</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                      <span class="material-symbols-outlined text-sm"
+                        >settings_input_component</span
+                      >
+                      <span class="text-xs">Auto</span>
+                    </div>
+                  </div>
+                  <button
+                    class="w-full bg-primary text-background-dark font-bold py-2.5 rounded hover:shadow-[0_0_20px_rgba(102,255,219,0.3)] transition-all"
+                  >
+                    Rent Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="mt-12 flex items-center justify-center gap-2">
+              <button
+                class="size-10 rounded-lg glass flex items-center justify-center text-primary border border-primary/10 hover:bg-primary/10 transition-all"
+              >
+                <span class="material-symbols-outlined">chevron_left</span>
+              </button>
+              <button
+                class="size-10 rounded-lg bg-primary text-background-dark font-bold"
+              >
+                1
+              </button>
+              <button
+                class="size-10 rounded-lg glass font-bold hover:bg-primary/10 transition-all"
+              >
+                2
+              </button>
+              <button
+                class="size-10 rounded-lg glass font-bold hover:bg-primary/10 transition-all"
+              >
+                3
+              </button>
+              <span class="text-slate-500 px-2">...</span>
+              <button
+                class="size-10 rounded-lg glass font-bold hover:bg-primary/10 transition-all"
+              >
+                12
+              </button>
+              <button
+                class="size-10 rounded-lg glass flex items-center justify-center text-primary border border-primary/10 hover:bg-primary/10 transition-all"
+              >
+                <span class="material-symbols-outlined">chevron_right</span>
+              </button>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer
+        class="mt-20 border-t border-primary/10 bg-background-dark/80 pt-16 pb-8 px-6 lg:px-20"
+      >
+        <div
+          class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12"
+        >
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <div
+                class="size-8 bg-primary rounded flex items-center justify-center text-background-dark"
+              >
+                <span class="material-symbols-outlined block text-black"
+                  >electric_car</span
+                >
+              </div>
+              <h2 class="text-xl font-black tracking-tighter uppercase italic">
+                Velocita
+              </h2>
+            </div>
+            <p class="text-slate-500 text-sm leading-relaxed">
+              Redefining luxury car rentals with speed, technology, and
+              elegance. Drive the future today.
+            </p>
+          </div>
+          <div>
+            <h4
+              class="font-bold mb-4 uppercase text-xs tracking-widest text-primary"
+            >
+              Company
+            </h4>
+            <ul class="space-y-2 text-sm text-slate-400">
+              <li>
+                <a class="hover:text-primary transition-colors" href="about.html"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-primary transition-colors" href="#"
+                  >Careers</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-primary transition-colors" href="#"
+                  >Contact</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-primary transition-colors" href="#"
+                  >Fleet</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4
+              class="font-bold mb-4 uppercase text-xs tracking-widest text-primary"
+            >
+              Support
+            </h4>
+            <ul class="space-y-2 text-sm text-slate-400">
+              <li>
+                <a class="hover:text-primary transition-colors" href="#"
+                  >Help Center</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-primary transition-colors" href="#"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-primary transition-colors" href="#"
+                  >Terms of Service</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-primary transition-colors" href="#"
+                  >Booking Guide</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4
+              class="font-bold mb-4 uppercase text-xs tracking-widest text-primary"
+            >
+              Newsletter
+            </h4>
+            <div class="flex flex-col gap-3">
+              <input
+                class="bg-primary/5 border border-primary/20 rounded px-4 py-2 text-sm focus:ring-primary focus:border-primary"
+                placeholder="Email address"
+                type="email"
+              />
+              <button
+                class="bg-primary text-background-dark font-bold py-2 rounded text-sm hover:brightness-110 transition-all"
+              >
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="max-w-7xl mx-auto pt-8 border-t border-primary/5 flex flex-col md:flex-row justify-between items-center gap-4"
+        >
+          <p class="text-xs text-slate-500">
+            © 2024 Velocita Luxury Rentals. All rights reserved.
+          </p>
+          <div class="flex gap-4">
+            <a
+              class="text-slate-500 hover:text-primary transition-colors"
+              href="#"
+              ><span class="material-symbols-outlined text-lg">public</span></a
+            >
+            <a
+              class="text-slate-500 hover:text-primary transition-colors"
+              href="#"
+              ><span class="material-symbols-outlined text-lg"
+                >alternate_email</span
+              ></a
+            >
+            <a
+              class="text-slate-500 hover:text-primary transition-colors"
+              href="#"
+              ><span class="material-symbols-outlined text-lg">share</span></a
+            >
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

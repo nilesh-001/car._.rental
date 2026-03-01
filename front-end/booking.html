@@ -46,66 +46,37 @@
         backdrop-filter: blur(12px);
         border: 1px solid rgba(102, 255, 219, 0.1);
       }
-      .form-input-custom {
-        @apply w-full bg-background-dark/50 border border-slate-700/50 rounded focus:border-primary focus:ring-1 focus:ring-primary/30 text-slate-100 placeholder-slate-500 transition-all duration-200;
-      }
     </style>
   </head>
   <body
     class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen"
   >
     <!-- Top Navigation Bar -->
-    <header
-      class="sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md"
-    >
-      <div
-        class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between"
-      >
-        <div class="flex items-center gap-3">
-          <div
-            class="size-10 bg-primary/20 rounded-full flex items-center justify-center text-primary"
-          >
-            <span class="material-symbols-outlined font-bold"
-              >rocket_launch</span
-            >
+    <header class="fixed top-0 w-full z-50 glass border-b border-primary/10">
+      <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between" >
+        <div class="flex items-center gap-2">
+          <div class="size-8 text-primary">
+            <svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              
+            </svg>
           </div>
-          <h1
-            class="text-2xl font-black tracking-tighter text-slate-900 dark:text-slate-100"
-          >
-            VELOCITA
-          </h1>
+          <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+            <span class="material-symbols-outlined block text-black">electric_car</span>
+          </div>
+          <span class="text-2xl font-black tracking-tighter text-white">VELOCITA</span>
         </div>
         <nav class="hidden md:flex items-center gap-10">
-          <a
-            class="text-sm font-semibold hover:text-primary transition-colors"
-            href="#"
-            >Fleet</a
-          >
-          <a
-            class="text-sm font-semibold hover:text-primary transition-colors"
-            href="#"
-            >Experience</a
-          >
-          <a
-            class="text-sm font-semibold hover:text-primary transition-colors"
-            href="#"
-            >Locations</a
-          >
-          <div class="h-8 w-px bg-slate-800"></div>
-          <div class="flex items-center gap-3">
-            <div class="text-right">
-              <p class="text-xs font-bold text-slate-500">Member</p>
-              <p class="text-sm font-semibold">Alex Rivera</p>
-            </div>
-            <div
-              class="size-10 rounded-full bg-slate-800 border-2 border-primary/30 overflow-hidden"
-              data-alt="User profile avatar portrait"
-              style="
-                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuB8m677WVYjC0YgAmrh-afc5bvwl0Apha_IAY6eXwn20wgkhflTOlfEZc6dSzdkbezzFU_LHWdDjUseRfyS5zcUo8_hDn_6e3AUjYD90uDdLgaWBHbUbard9e_YEhNQxCKv3pXq-5RzO0R-A0YzjtiRaxjxbp_rqSkWhmGHPH41PA2kpBI7IheemUrFFLN4cpHEzMsHwwdZsoepXiM7mWy-k0yzZOyojOW44ebSVVkqxcpD7aHGyKj9sco_SK2ZAvrgvwB3lDrjYDk&quot;);
-              "
-            ></div>
-          </div>
+          <a class="text-sm font-semibold text-primary" href="index.html">Home</a>
+          <a class="text-sm font-semibold hover:text-primary transition-colors" href="carlisting.html" >Cars</a>
+          <a class="text-sm font-semibold hover:text-primary transition-colors" href="about.html" >About</a>
+          <a class="text-sm font-semibold hover:text-primary transition-colors" href="contact-us.html" >Contact</a >
         </nav>
+        <a
+            href="login.html"
+            class="bg-primary text-background-dark px-6 py-2.5 rounded-full font-bold text-sm hover:opacity-90 transition-all"
+          >
+            Login/Signup
+          </a>
       </div>
     </header>
     <main class="max-w-7xl mx-auto px-6 py-12">
@@ -135,7 +106,7 @@
                   >Full Name</label
                 >
                 <input
-                  class="form-input-custom h-14 px-4"
+                  class="w-full bg-background-dark/50 border border-slate-700/50 rounded focus:border-primary focus:ring-1 focus:ring-primary/30 text-slate-100 placeholder-slate-500 transition-all duration-200 h-14 px-4"
                   placeholder="John Doe"
                   type="text"
                 />
@@ -145,7 +116,7 @@
                   >Email Address</label
                 >
                 <input
-                  class="form-input-custom h-14 px-4"
+                  class="w-full bg-background-dark/50 border border-slate-700/50 rounded focus:border-primary focus:ring-1 focus:ring-primary/30 text-slate-100 placeholder-slate-500 transition-all duration-200 h-14 px-4"
                   placeholder="john@velocita.com"
                   type="email"
                 />
@@ -155,13 +126,15 @@
                   >Phone Number</label
                 >
                 <div class="flex gap-2">
-                  <select class="form-input-custom h-14 px-4 w-32">
+                  <select
+                    class="w-full bg-background-dark/50 border border-slate-700/50 rounded focus:border-primary focus:ring-1 focus:ring-primary/30 text-slate-100 placeholder-slate-500 transition-all duration-200 h-14 px-4 w-32"
+                  >
                     <option>+1 US</option>
                     <option>+44 UK</option>
                     <option>+49 DE</option>
                   </select>
                   <input
-                    class="form-input-custom h-14 px-4 flex-1"
+                    class="w-full bg-background-dark/50 border border-slate-700/50 rounded focus:border-primary focus:ring-1 focus:ring-primary/30 text-slate-100 placeholder-slate-500 transition-all duration-200 h-14 px-4 flex-1"
                     placeholder="(555) 000-0000"
                     type="tel"
                   />
@@ -193,14 +166,20 @@
                     >
                   </div>
                   <input
-                    class="form-input-custom h-14 px-4"
+                    class="w-full bg-background-dark/50 border border-slate-700/50 rounded focus:border-primary focus:ring-1 focus:ring-primary/30 text-slate-100 placeholder-slate-500 transition-all duration-200 h-14 px-4"
                     data-location="Miami"
                     placeholder="Miami International Airport"
                     type="text"
                   />
                   <div class="grid grid-cols-2 gap-4">
-                    <input class="form-input-custom h-14 px-4" type="date" />
-                    <input class="form-input-custom h-14 px-4" type="time" />
+                    <input
+                      class="w-full bg-background-dark/50 border border-slate-700/50 rounded focus:border-primary focus:ring-1 focus:ring-primary/30 text-slate-100 placeholder-slate-500 transition-all duration-200 h-14 px-4"
+                      type="date"
+                    />
+                    <input
+                      class="w-full bg-background-dark/50 border border-slate-700/50 rounded focus:border-primary focus:ring-1 focus:ring-primary/30 text-slate-100 placeholder-slate-500 transition-all duration-200 h-14 px-4"
+                      type="time"
+                    />
                   </div>
                 </div>
                 <div class="space-y-4">
@@ -213,13 +192,19 @@
                     >
                   </div>
                   <input
-                    class="form-input-custom h-14 px-4"
+                    class="w-full bg-background-dark/50 border border-slate-700/50 rounded focus:border-primary focus:ring-1 focus:ring-primary/30 text-slate-100 placeholder-slate-500 transition-all duration-200 h-14 px-4"
                     placeholder="Same as pickup"
                     type="text"
                   />
                   <div class="grid grid-cols-2 gap-4">
-                    <input class="form-input-custom h-14 px-4" type="date" />
-                    <input class="form-input-custom h-14 px-4" type="time" />
+                    <input
+                      class="w-full bg-background-dark/50 border border-slate-700/50 rounded focus:border-primary focus:ring-1 focus:ring-primary/30 text-slate-100 placeholder-slate-500 transition-all duration-200 h-14 px-4"
+                      type="date"
+                    />
+                    <input
+                      class="w-full bg-background-dark/50 border border-slate-700/50 rounded focus:border-primary focus:ring-1 focus:ring-primary/30 text-slate-100 placeholder-slate-500 transition-all duration-200 h-14 px-4"
+                      type="time"
+                    />
                   </div>
                 </div>
               </div>
@@ -273,7 +258,7 @@
                   >
                   <div class="relative">
                     <input
-                      class="form-input-custom h-14 px-4 pl-12"
+                      class="w-full bg-background-dark/50 border border-slate-700/50 rounded focus:border-primary focus:ring-1 focus:ring-primary/30 text-slate-100 placeholder-slate-500 transition-all duration-200 h-14 px-4 pl-12"
                       placeholder="0000 0000 0000 0000"
                       type="text"
                     />
@@ -290,7 +275,7 @@
                       >Expiry Date</label
                     >
                     <input
-                      class="form-input-custom h-14 px-4"
+                      class="w-full bg-background-dark/50 border border-slate-700/50 rounded focus:border-primary focus:ring-1 focus:ring-primary/30 text-slate-100 placeholder-slate-500 transition-all duration-200 h-14 px-4"
                       placeholder="MM/YY"
                       type="text"
                     />
@@ -301,7 +286,7 @@
                       >CVC</label
                     >
                     <input
-                      class="form-input-custom h-14 px-4"
+                      class="w-full bg-background-dark/50 border border-slate-700/50 rounded focus:border-primary focus:ring-1 focus:ring-primary/30 text-slate-100 placeholder-slate-500 transition-all duration-200 h-14 px-4"
                       placeholder="***"
                       type="password"
                     />
