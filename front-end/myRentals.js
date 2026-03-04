@@ -51,11 +51,36 @@ function renderBookings() {
   });
 
   // update dashboard stats
-  activeBookingsCount.textContent = activeCount;
-  totalTripsCount.textContent = allBookings.length;
+activeBookingsCount.textContent = activeCount;
+
+// completed trips only
+const completedTrips = allBookings.filter(
+  (b) => b.status === "completed"
+);
+
+totalTripsCount.textContent = completedTrips.length;
+
+
+// calculate rating
+const ratings = completedTrips
+  .map((b) => b.rating)
+  .filter((r) => r !== undefined);
+
+if (ratings.length > 0) {
+
+  const avg =
+    ratings.reduce((a, b) => a + b, 0) / ratings.length;
+
+  driverRating.textContent = avg.toFixed(1) + " ⭐";
+
+} else {
+
+  driverRating.textContent = "—";
+
+}
 
   // temporary rating
-  driverRating.textContent = (4.5 + Math.random() * 0.5).toFixed(1);
+  // driverRating.textContent = (4.5 + Math.random() * 0.5).toFixed(1);
 
   const bookingsToShow = showAll ? allBookings : allBookings.slice(0, 5);
 
