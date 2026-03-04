@@ -93,6 +93,7 @@
                   >Full Name</label
                 >
                 <input
+                  id="name"
                   class="w-full bg-background-dark/50 border border-slate-700/50 rounded focus:border-primary focus:ring-1 focus:ring-primary/30 text-slate-100 placeholder-slate-500 transition-all duration-200 h-14 px-4"
                   placeholder="Name"
                   type="text"
@@ -105,6 +106,7 @@
                 <input
                   class="w-full bg-background-dark/50 border border-slate-700/50 rounded focus:border-primary focus:ring-1 focus:ring-primary/30 text-slate-100 placeholder-slate-500 transition-all duration-200 h-14 px-4"
                   placeholder="E-mail"
+                  id="email"
                   type="email"
                 />
               </div>
@@ -116,6 +118,7 @@
                   <input
                     class="w-full bg-background-dark/50 border border-slate-700/50 rounded focus:border-primary focus:ring-1 focus:ring-primary/30 text-slate-100 placeholder-slate-500 transition-all duration-200 h-14 px-4 flex-1"
                     placeholder="000-000-0000"
+                    id="phone"
                     type="tel"
                   />
                 </div>
@@ -148,11 +151,13 @@
                   <input
                     class="w-full bg-background-dark/50 border border-slate-700/50 rounded focus:border-primary focus:ring-1 focus:ring-primary/30 text-slate-100 placeholder-slate-500 transition-all duration-200 h-14 px-4"
                     data-location="Miami"
+                    id="pickupLocation"
                     placeholder="Miami International Airport"
                     type="text"
                   />
                   <div class="grid grid-cols-2 gap-4">
                     <input
+                      id="pickupDate"
                       class="w-full bg-background-dark/50 border border-slate-700/50 rounded focus:border-primary focus:ring-1 focus:ring-primary/30 text-slate-100 placeholder-slate-500 transition-all duration-200 h-14 px-4"
                       type="date"
                     />
@@ -178,6 +183,7 @@
                   />
                   <div class="grid grid-cols-2 gap-4">
                     <input
+                      id="returnDate"
                       class="w-full bg-background-dark/50 border border-slate-700/50 rounded focus:border-primary focus:ring-1 focus:ring-primary/30 text-slate-100 placeholder-slate-500 transition-all duration-200 h-14 px-4"
                       type="date"
                     />
@@ -190,103 +196,13 @@
               </div>
             </div>
           </section>
-          <section>
-            <div class="flex items-center gap-4 mb-8">
-              <div
-                class="size-12 rounded-full bg-primary/20 border border-primary text-primary flex items-center justify-center font-bold text-lg"
-              >
-                3
-              </div>
-              <div>
-                <h2 class="text-2xl font-bold">Payment Method</h2>
-                <p class="text-slate-500 dark:text-slate-400">
-                  Secure encrypted payment processing.
-                </p>
-              </div>
-            </div>
-            <div class="glass-panel p-8 rounded-xl">
-              <div class="grid grid-cols-3 gap-4 mb-8">
-                <button
-                  class="flex flex-col items-center justify-center gap-3 p-6 rounded-xl border-2 border-primary bg-primary/5 text-primary"
-                >
-                  <span class="material-symbols-outlined text-3xl"
-                    >credit_card</span
-                  >
-                  <span class="text-sm font-bold">Card</span>
-                </button>
-                <button
-                  class="flex flex-col items-center justify-center gap-3 p-6 rounded-xl border border-slate-700/50 hover:border-primary/50 transition-colors"
-                >
-                  <span class="material-symbols-outlined text-3xl"
-                    >account_balance_wallet</span
-                  >
-                  <span class="text-sm font-bold">UPI</span>
-                </button>
-                <button
-                  class="flex flex-col items-center justify-center gap-3 p-6 rounded-xl border border-slate-700/50 hover:border-primary/50 transition-colors"
-                >
-                  <span class="material-symbols-outlined text-3xl"
-                    >payments</span
-                  >
-                  <span class="text-sm font-bold">PayPal</span>
-                </button>
-              </div>
-              <div class="space-y-6">
-                <div>
-                  <label class="block text-sm font-semibold mb-2 text-slate-400"
-                    >Card Number</label
-                  >
-                  <div class="relative">
-                    <input
-                      class="w-full bg-background-dark/50 border border-slate-700/50 rounded focus:border-primary focus:ring-1 focus:ring-primary/30 text-slate-100 placeholder-slate-500 transition-all duration-200 h-14 px-4 pl-12"
-                      placeholder="0000 0000 0000 0000"
-                      type="text"
-                    />
-                    <span
-                      class="material-symbols-outlined absolute left-4 top-4 text-slate-500"
-                      >lock</span
-                    >
-                  </div>
-                </div>
-                <div class="grid grid-cols-2 gap-6">
-                  <div>
-                    <label
-                      class="block text-sm font-semibold mb-2 text-slate-400"
-                      >Expiry Date</label
-                    >
-                    <input
-                      class="w-full bg-background-dark/50 border border-slate-700/50 rounded focus:border-primary focus:ring-1 focus:ring-primary/30 text-slate-100 placeholder-slate-500 transition-all duration-200 h-14 px-4"
-                      placeholder="MM/YY"
-                      type="text"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      class="block text-sm font-semibold mb-2 text-slate-400"
-                      >CVC</label
-                    >
-                    <input
-                      class="w-full bg-background-dark/50 border border-slate-700/50 rounded focus:border-primary focus:ring-1 focus:ring-primary/30 text-slate-100 placeholder-slate-500 transition-all duration-200 h-14 px-4"
-                      placeholder="***"
-                      type="password"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
         </div>
         <!-- Right Column: Summary Card -->
         <div class="lg:col-span-4">
           <div class="sticky top-28 space-y-6">
             <div class="glass-panel rounded-xl overflow-hidden">
               <div class="h-48 w-full bg-slate-800 relative overflow-hidden">
-                <img
-                  alt="Luxury Sports Car"
-                  class="w-full h-full object-cover"
-                  data-alt="Modern high-performance electric sports car"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFbHKVRxuJpQVHMPXse_lUngHbPNyNarcApu2Fh7ZO61JatPw1AINlMgbge55kE7BieJE1XeVaTut2-wHNJbYLyyVrkS3PwVMP-3TQWRGezD3OtsSUboZKcG9t57f9KLUHKJMp4ITIkyw8cg-EFDs8ZKKkByapYxL-5sAgbk0PxIcBNI4I5D6Nc1ZXAXu7kGZZYNfzXNbkCaGr3rLQBjzYj05TRwXiYOSnRc-p1KxANrd5we5mGBrBYwzT9LZevJn5SkMkusYXDi8"
-                />
+                <img id="carImage" class="w-full h-full object-cover" src="" />
                 <div class="absolute top-4 left-4">
                   <span
                     class="px-3 py-1 rounded-full bg-primary text-background-dark text-xs font-black uppercase tracking-widest"
@@ -295,14 +211,14 @@
                 </div>
               </div>
               <div class="p-6">
-                <h3 class="text-xl font-black mb-1">Porsche Taycan Turbo S</h3>
-                <p class="text-slate-400 text-sm mb-6">
-                  Fully Electric • 750 hp • 2024 Model
-                </p>
+                <h3 id="carName" class="text-xl font-black mb-1"></h3>
+                <p id="carDetails" class="text-slate-400 text-sm mb-6"></p>
                 <div class="space-y-4 border-t border-slate-800 pt-6">
                   <div class="flex justify-between text-sm">
-                    <span class="text-slate-400">Rental (3 days)</span>
-                    <span class="font-bold">₹1,250.00</span>
+                    <span class="text-slate-400"
+                      >Rental (<span id="rentalDays">1</span> day)</span
+                    >
+                    <span id="carPrice" class="font-bold"></span>
                   </div>
                   <div class="flex justify-between text-sm">
                     <span class="text-slate-400"
@@ -323,7 +239,7 @@
                       >
                         Total Price
                       </p>
-                      <p class="text-3xl font-black">₹1,477.50</p>
+                      <p id="totalPrice" class="text-3xl font-black"></p>
                     </div>
                     <div class="text-right">
                       <p class="text-[10px] text-slate-500 italic">
@@ -351,6 +267,7 @@
               </div>
             </div>
             <button
+              id="completeBookingBtn"
               class="w-full bg-primary hover:bg-primary/90 text-background-dark font-black py-5 rounded-xl shadow-[0_0_30px_rgba(102,255,219,0.3)] transition-all transform hover:scale-[1.02] active:scale-[0.98]"
             >
               COMPLETE BOOKING
@@ -392,7 +309,9 @@
               <h4 class="text-white font-bold">Quick Links</h4>
               <ul class="space-y-2 text-slate-400 text-sm">
                 <li>
-                  <a class="hover:text-primary transition-colors" href="carlisting.html"
+                  <a
+                    class="hover:text-primary transition-colors"
+                    href="carlisting.html"
                     >Find a Car</a
                   >
                 </li>
@@ -412,10 +331,13 @@
             </div>
           </div>
         </div>
-        <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-center items-center gap-4 text-xs text-slate-500 uppercase tracking-widest">
+        <div
+          class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-center items-center gap-4 text-xs text-slate-500 uppercase tracking-widest"
+        >
           <p>© 2026 Velocita Luxury Rentals. All rights reserved.</p>
         </div>
       </div>
     </footer>
+    <script src="js/booking.js"></script>
   </body>
 </html>

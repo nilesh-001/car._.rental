@@ -11,8 +11,6 @@ const driverRating = document.getElementById("driverRating");
 
 const seeAllButton = document.getElementById("seeAllRentals");
 
-const modal = document.getElementById("receiptModal");
-
 const userId = localStorage.getItem("userId");
 
 let allBookings = [];
@@ -20,71 +18,68 @@ let showAll = false;
 
 async function loadRentals() {
   try {
+
     const res = await fetch(
-      `http://localhost:4044/api/bookings/user/${userId}`,
+      `http://localhost:4044/api/bookings/user/${userId}`
     );
 
     const bookings = await res.json();
 
-    // newest bookings first
     bookings.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
     allBookings = bookings;
 
     renderBookings();
+
   } catch (err) {
+
     console.error("Error loading rentals:", err);
+
   }
 }
 
 function renderBookings() {
+
   rentalsContainer.innerHTML = "";
   activeContainer.innerHTML = "";
 
   let activeCount = 0;
 
-  // count active bookings
   allBookings.forEach((booking) => {
     if (booking.status === "active") {
       activeCount++;
     }
   });
 
-  // update dashboard stats
-activeBookingsCount.textContent = activeCount;
+  activeBookingsCount.textContent = activeCount;
 
-// completed trips only
-const completedTrips = allBookings.filter(
-  (b) => b.status === "completed"
-);
+  const completedTrips = allBookings.filter(
+    (b) => b.status === "completed"
+  );
 
-totalTripsCount.textContent = completedTrips.length;
+  totalTripsCount.textContent = completedTrips.length;
 
+  const ratings = completedTrips
+    .map((b) => b.rating)
+    .filter((r) => r !== undefined);
 
-// calculate rating
-const ratings = completedTrips
-  .map((b) => b.rating)
-  .filter((r) => r !== undefined);
+  if (ratings.length > 0) {
 
-if (ratings.length > 0) {
+    const avg =
+      ratings.reduce((a, b) => a + b, 0) / ratings.length;
 
-  const avg =
-    ratings.reduce((a, b) => a + b, 0) / ratings.length;
+    driverRating.textContent = avg.toFixed(1) + " ⭐";
 
-  driverRating.textContent = avg.toFixed(1) + " ⭐";
+  } else {
 
-} else {
+    driverRating.textContent = "—";
 
-  driverRating.textContent = "—";
-
-}
-
-  // temporary rating
-  // driverRating.textContent = (4.5 + Math.random() * 0.5).toFixed(1);
+  }
 
   const bookingsToShow = showAll ? allBookings : allBookings.slice(0, 5);
 
   bookingsToShow.forEach((booking) => {
+
     const car = booking.carId || { name: "Unknown Car", image: "" };
 
     const pickup = new Date(booking.pickupDate).toLocaleDateString();
@@ -92,6 +87,7 @@ if (ratings.length > 0) {
 
     // ACTIVE BOOKING CARD
     if (booking.status === "active" && activeContainer.innerHTML === "") {
+
       activeContainer.innerHTML = `
 
 <div class="relative overflow-hidden bg-slate-900 rounded-lg shadow-2xl">
@@ -140,7 +136,6 @@ Return: ${drop}
 `;
     }
 
-    // TABLE ROW
     const row = `
 
 <tr class="hover:bg-slate-50 dark:hover:bg-primary/5 transition-colors">
@@ -193,16 +188,18 @@ ${booking.status}
 
 <td class="px-6 py-4">
 
-<button
-class="p-2 text-slate-400 hover:text-primary"
-onclick='openReceipt(${JSON.stringify(booking)})'
+${
+booking.status === "active"
+? `<button
+class="px-3 py-1 bg-red-500/10 text-red-400 hover:bg-red-500/20 rounded font-bold text-xs"
+onclick="returnCar('${booking._id}')"
 >
-
-<span class="material-symbols-outlined">
-receipt_long
-</span>
-
-</button>
+Return Car
+</button>`
+: `<span class="text-emerald-400 text-xs font-bold">
+Completed
+</span>`
+}
 
 </td>
 
@@ -211,10 +208,11 @@ receipt_long
 `;
 
     rentalsContainer.innerHTML += row;
+
   });
 
-  // show message if no active booking
   if (activeContainer.innerHTML === "") {
+
     activeContainer.innerHTML = `
 
 <div class="bg-slate-900 rounded-lg p-10 text-center text-slate-400">
@@ -228,38 +226,43 @@ directions_car
 </div>
 
 `;
+
   }
+
 }
 
 seeAllButton.addEventListener("click", () => {
+
   showAll = true;
+
   renderBookings();
+
 });
 
-function openReceipt(booking) {
-  const car = booking.carId || { name: "Unknown" };
+async function returnCar(bookingId) {
 
-  document.getElementById("receiptCar").textContent = car.name;
+  if (!confirm("Return this car?")) return;
 
-  document.getElementById("receiptPickup").textContent = new Date(
-    booking.pickupDate,
-  ).toLocaleDateString();
+  try {
 
-  document.getElementById("receiptReturn").textContent = new Date(
-    booking.returnDate,
-  ).toLocaleDateString();
+    await fetch(
+      `http://localhost:4044/api/bookings/return/${bookingId}`,
+      {
+        method: "PUT"
+      }
+    );
 
-  document.getElementById("receiptPrice").textContent = booking.totalPrice;
+    alert("Car returned successfully 🚗");
 
-  document.getElementById("receiptStatus").textContent = booking.status;
+    loadRentals();
 
-  modal.classList.remove("hidden");
-  modal.classList.add("flex");
+  } catch (err) {
+
+    console.error("Return error:", err);
+
+  }
+
 }
-
-document.getElementById("closeReceipt").onclick = () => {
-  modal.classList.add("hidden");
-};
 
 const logoutBtn = document.getElementById("logoutBtn");
 const logoutModal = document.getElementById("logoutModal");
@@ -276,13 +279,13 @@ cancelLogout.addEventListener("click", () => {
 });
 
 confirmLogout.addEventListener("click", () => {
-  // remove login data
+
   localStorage.removeItem("token");
   localStorage.removeItem("userId");
   localStorage.removeItem("userName");
 
-  // redirect
   window.location.href = "index.html";
+
 });
 
 loadRentals();

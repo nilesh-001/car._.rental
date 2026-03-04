@@ -30,5 +30,25 @@ router.get("/user/:id", async (req, res) => {
   res.json(bookings);
 
 });
+// returning the car
+router.put("/return/:id", async (req, res) => {
+
+try {
+
+const booking = await Booking.findByIdAndUpdate(
+req.params.id,
+{ status: "completed" },
+{ new: true }
+);
+
+res.json(booking);
+
+} catch (err) {
+
+res.status(500).json({ message: "Error returning car" });
+
+}
+
+});
 
 module.exports = router;

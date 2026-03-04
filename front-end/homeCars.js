@@ -38,7 +38,7 @@ function renderHomeCars() {
           </h3>
 
           <p class="text-primary font-bold">
-            $${car.price}/day
+            ₹${car.price}/day
           </p>
 
           <a href="booking.html?id=${car._id}"
