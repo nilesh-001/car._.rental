@@ -1,0 +1,225 @@
+<!doctype html>
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#ec5b13",
+              "background-light": "#f8f6f6",
+              "background-dark": "#221610",
+            },
+            fontFamily: {
+              display: ["Public Sans", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <title>Velocita | Sign Up</title>
+  </head>
+
+  <body
+    class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex items-center justify-center overflow-x-hidden"
+  >
+    <div class="relative flex min-h-screen w-full flex-col lg:flex-row">
+      <!-- LEFT HERO IMAGE -->
+
+      <div
+        class="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-background-dark"
+      >
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-background-dark/80 via-transparent to-transparent z-10"
+        ></div>
+
+        <div
+          class="absolute inset-0 bg-cover bg-center"
+          style="
+            background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAnBnVdZqkm2Nn5lCW5WX4m2t8OZ6qQX5ZDB5XECIMDA1Te2kG3aD_Efk-ifUExqk3S5MGNUq80Hnqbe5hS3C-tkPyGPBjexOo54MFdJUEDu1_KfBsO6vI1V8YnMyxqKtNDIryhgNYrcWZLKTQZ7A_Vhu1Qb2KqN1R4dTtvY3vsn9830dqPUUrXe23Oqg89TQjSg220zSQvMZuHMFwI6AMpoWtD7ZI00q63oWwmqEQYWOyvqs6KlYudLRZw-YhmAtOlalfeioSuvXU&quot;);
+          "
+        ></div>
+
+        <div class="relative z-20 flex flex-col justify-end p-16 h-full">
+          <div class="flex items-center gap-3 mb-6">
+            <div
+              class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+            >
+              <span class="material-symbols-outlined text-black"
+                >electric_car</span
+              >
+            </div>
+
+            <h1 class="text-3xl font-black tracking-tight text-white uppercase">
+              Velocita
+            </h1>
+          </div>
+
+          <h2 class="text-5xl font-black text-white leading-tight mb-4">
+            Start your luxury journey.
+          </h2>
+
+          <p class="text-slate-300 text-lg max-w-md">
+            Create your Velocita account and start renting world class vehicles
+            instantly.
+          </p>
+        </div>
+      </div>
+
+      <!-- RIGHT FORM -->
+
+      <div class="flex-1 flex flex-col justify-center px-6 py-12 lg:px-24">
+        <div class="mx-auto w-full max-w-md">
+          <div class="flex justify-end mb-4">
+            <a
+              href="index.html"
+              class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition"
+            >
+              <span
+                class="material-symbols-outlined text-slate-600 dark:text-slate-300"
+              >
+                close
+              </span>
+            </a>
+          </div>
+
+          <div class="mb-10">
+            <h2 class="text-3xl font-black tracking-tight">Create Account</h2>
+
+            <p class="mt-2 text-slate-500">
+              Sign up to start renting premium cars.
+            </p>
+          </div>
+
+          <form id="signupForm" class="space-y-6">
+            <!-- NAME -->
+
+            <div>
+              <label class="block text-sm font-medium">Full Name</label>
+
+              <input
+                type="text"
+                id="name"
+                required
+                placeholder="John Doe"
+                class="mt-2 block w-full rounded-xl border-0 py-4 px-4 text-slate-900 dark:text-white shadow-sm ring-1 ring-inset ring-slate-200 dark:ring-slate-800 focus:ring-2 focus:ring-primary bg-white dark:bg-slate-900"
+              />
+            </div>
+
+            <!-- EMAIL -->
+
+            <div>
+              <label class="block text-sm font-medium">Email Address</label>
+
+              <input
+                type="email"
+                id="email"
+                required
+                placeholder="name@example.com"
+                class="mt-2 block w-full rounded-xl border-0 py-4 px-4 text-slate-900 dark:text-white shadow-sm ring-1 ring-inset ring-slate-200 dark:ring-slate-800 focus:ring-2 focus:ring-primary bg-white dark:bg-slate-900"
+              />
+            </div>
+
+            <!-- PASSWORD -->
+
+            <div>
+              <label class="block text-sm font-medium">Password</label>
+
+              <input
+                type="password"
+                id="password"
+                required
+                placeholder="Enter password"
+                class="mt-2 block w-full rounded-xl border-0 py-4 px-4 text-slate-900 dark:text-white shadow-sm ring-1 ring-inset ring-slate-200 dark:ring-slate-800 focus:ring-2 focus:ring-primary bg-white dark:bg-slate-900"
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="flex w-full justify-center rounded-xl bg-primary px-3 py-4 text-sm font-bold text-white hover:bg-primary/90 transition-all"
+            >
+              Create Account
+            </button>
+          </form>
+
+          <p class="mt-10 text-center text-sm text-slate-500">
+            Already have an account?
+
+            <a
+              href="login.html"
+              class="font-bold text-primary hover:text-primary/80"
+            >
+              Login
+            </a>
+          </p>
+          <footer class="mt-12 text-center text-xs text-slate-400">
+            © 2026 Velocita Luxury Car Rentals. All rights reserved.
+          </footer>
+        </div>
+      </div>
+    </div>
+    
+
+    <script>
+      const form = document.getElementById("signupForm");
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        try {
+          const res = await fetch("http://localhost:4044/api/auth/signup", {
+            method: "POST",
+
+            headers: {
+              "Content-Type": "application/json",
+            },
+
+            body: JSON.stringify({
+              name,
+              email,
+              password,
+            }),
+          });
+
+          const data = await res.json();
+
+          if (!res.ok) {
+            alert(data.message || "Signup failed");
+            return;
+          }
+
+          alert("Account created successfully! Please login.");
+
+          window.location.href = "login.html";
+        } catch (err) {
+          console.error(err);
+          alert("Server error");
+        }
+      });
+    </script>
+  </body>
+</html>

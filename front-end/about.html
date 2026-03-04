@@ -71,14 +71,8 @@
           <a class="text-sm font-semibold hover:text-primary transition-colors" href="carlisting.html" >Cars</a>
           <a class="text-sm font-semibold text-primary" href="about.html" >About</a>
           <a class="text-sm font-semibold hover:text-primary transition-colors" href="contact-us.html" >Contact</a >
-          <a class="text-sm font-semibold hover:text-primary transition-colors" href="myrentals.html">My Rentals</a>
         </nav>
-        <a
-            href="login.html"
-            class="bg-primary text-background-dark px-6 py-2.5 rounded-full font-bold text-sm hover:opacity-90 transition-all"
-          >
-            Login/Signup
-          </a>
+        <div id="navAuth"></div>
       </div>
     </header>
     <main class="pt-20">
@@ -369,18 +363,6 @@
               We're just getting started. Experience the next generation of
               luxury car rentals and see where Velocita can take you.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                class="bg-primary text-background-dark px-10 py-4 rounded-full font-bold text-lg hover:shadow-[0_0_20px_rgba(102,255,219,0.4)] transition-all"
-              >
-                Explore the Fleet
-              </button>
-              <button
-                class="bg-white/10 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition-all border border-white/10"
-              >
-                Our Services
-              </button>
-            </div>
           </div>
           <!-- Decorative element -->
           <div
@@ -415,26 +397,6 @@
               The world's first decentralized premium car rental platform.
               Experience driving like never before.
             </p>
-            <div class="flex gap-4">
-              <a
-                class="size-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all"
-                href="#"
-              >
-                <i class="material-symbols-outlined text-sm">share</i>
-              </a>
-              <a
-                class="size-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all"
-                href="#"
-              >
-                <i class="material-symbols-outlined text-sm">public</i>
-              </a>
-              <a
-                class="size-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all"
-                href="#"
-              >
-                <i class="material-symbols-outlined text-sm">mail</i>
-              </a>
-            </div>
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-12 lg:gap-24">
             <div class="space-y-4">
@@ -461,20 +423,11 @@
             </div>
           </div>
         </div>
-        <div
-          class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500 uppercase tracking-widest"
-        >
+        <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-center items-center gap-4 text-xs text-slate-500 uppercase tracking-widest">
           <p>© 2026 Velocita Luxury Rentals. All rights reserved.</p>
-          <div class="flex gap-8">
-            <a class="hover:text-white transition-colors" href="#"
-              >Privacy Policy</a
-            >
-            <a class="hover:text-white transition-colors" href="#"
-              >Terms of Service</a
-            >
-          </div>
         </div>
       </div>
     </footer>
+    <script src="js/navbar.js"></script>
   </body>
 </html>
