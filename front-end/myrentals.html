@@ -1,0 +1,504 @@
+<!doctype html>
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Velocita - User Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#66ffdb",
+              "background-light": "#f5f8f8",
+              "background-dark": "#0f231e",
+            },
+            fontFamily: {
+              display: ["Inter"],
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+              lg: "2rem",
+              xl: "3rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+    <header class="fixed top-0 w-full z-50 glass border-b border-primary/10">
+      <div
+        class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-2">
+          <div class="size-8 text-primary">
+            <svg
+              fill="none"
+              viewbox="0 0 48 48"
+              xmlns="http://www.w3.org/2000/svg"
+            ></svg>
+          </div>
+          <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+            <span class="material-symbols-outlined block text-black">electric_car</span>
+          </div>
+          <span class="text-2xl font-black tracking-tighter text-white">VELOCITA</span>
+        </div>
+        <nav class="hidden md:flex items-center gap-10">
+          <a class="text-sm font-semibold hover:text-primary transition-colors" href="index.html">Home</a>
+          <a class="text-sm font-semibold hover:text-primary transition-colors" href="carlisting.html">Cars</a>
+          <a class="text-sm font-semibold hover:text-primary transition-colors" href="about.html">About</a>
+          <a class="text-sm font-semibold hover:text-primary transition-colors" href="contact-us.html">Contact</a>
+          <a class="text-sm font-semibold text-primary" href="myrentals.html">My Rentals</a>
+        </nav>
+        <a
+          href="login.html"
+          class="bg-primary text-background-dark px-6 py-2.5 rounded-full font-bold text-sm hover:opacity-90 transition-all"
+        >
+          Login/Signup
+        </a>
+      </div>
+    </header>
+
+
+    <div class="flex h-screen overflow-hidden pt-20">
+      <!-- Sidebar -->
+      <aside
+        class="w-72 bg-slate-900/50 dark:bg-slate-900/40 border-r border-slate-200 dark:border-primary/10 flex flex-col backdrop-blur-xl"
+      >
+        <nav class="flex-1 px-4 space-y-2 pt-6">
+          <a
+            class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary border border-primary/20"
+            href="#"
+          >
+            <span class="material-symbols-outlined">dashboard</span>
+            <span class="font-medium">Overview</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-primary/5 transition-all"
+            href="#"
+          >
+            <span class="material-symbols-outlined">calendar_today</span>
+            <span class="font-medium">My Bookings</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-primary/5 transition-all"
+            href="#"
+          >
+            <span class="material-symbols-outlined">history</span>
+            <span class="font-medium">History</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-primary/5 transition-all"
+            href="#"
+          >
+            <span class="material-symbols-outlined">settings</span>
+            <span class="font-medium">Settings</span>
+          </a>
+        </nav>
+        <div class="p-4 border-t border-slate-200 dark:border-primary/10">
+          <button
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-rose-500 hover:bg-rose-500/10 transition-all w-full"
+          >
+            <span class="material-symbols-outlined">logout</span>
+            <span class="font-medium">Logout</span>
+          </button>
+        </div>
+      </aside>
+      <!-- Main Content -->
+      <main
+        class="flex-1 overflow-y-auto bg-slate-50 dark:bg-background-dark/50"
+      >
+
+        
+
+        <div class="px-10 pb-10">
+          <!-- Greeting Section -->
+          <section class="py-8">
+            <h2
+              class="text-4xl font-black text-slate-900 dark:text-white tracking-tight"
+            >
+              Welcome back, Alex
+            </h2>
+            <p class="text-slate-600 dark:text-slate-400 mt-2">
+              Ready for your next luxury experience? Here is your overview.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+              <div
+                class="bg-white/40 dark:bg-slate-800/40 backdrop-blur-xl border border-white/20 dark:border-primary/5 p-6 rounded-lg"
+              >
+                <div class="flex justify-between items-start mb-4">
+                  <div class="p-3 bg-primary/20 rounded-xl">
+                    <span class="material-symbols-outlined text-primary"
+                      >key</span
+                    >
+                  </div>
+                  <span
+                    class="text-primary text-xs font-bold uppercase tracking-widest"
+                    >+12%</span
+                  >
+                </div>
+                <p
+                  class="text-slate-500 dark:text-slate-400 text-sm font-medium"
+                >
+                  Active Bookings
+                </p>
+                <p
+                  class="text-3xl font-black text-slate-900 dark:text-white mt-1"
+                >
+                  2
+                </p>
+              </div>
+              <div
+                class="bg-white/40 dark:bg-slate-800/40 backdrop-blur-xl border border-white/20 dark:border-primary/5 p-6 rounded-lg"
+              >
+                <div class="flex justify-between items-start mb-4">
+                  <div class="p-3 bg-indigo-500/20 rounded-xl">
+                    <span class="material-symbols-outlined text-indigo-400"
+                      >route</span
+                    >
+                  </div>
+                  <span
+                    class="text-indigo-400 text-xs font-bold uppercase tracking-widest"
+                    >Total</span
+                  >
+                </div>
+                <p
+                  class="text-slate-500 dark:text-slate-400 text-sm font-medium"
+                >
+                  Total Trips
+                </p>
+                <p
+                  class="text-3xl font-black text-slate-900 dark:text-white mt-1"
+                >
+                  12
+                </p>
+              </div>
+              <div
+                class="bg-white/40 dark:bg-slate-800/40 backdrop-blur-xl border border-white/20 dark:border-primary/5 p-6 rounded-lg"
+              >
+                <div class="flex justify-between items-start mb-4">
+                  <div class="p-3 bg-amber-500/20 rounded-xl">
+                    <span class="material-symbols-outlined text-amber-400"
+                      >star</span
+                    >
+                  </div>
+                  <span
+                    class="text-amber-400 text-xs font-bold uppercase tracking-widest"
+                    >Elite</span
+                  >
+                </div>
+                <p
+                  class="text-slate-500 dark:text-slate-400 text-sm font-medium"
+                >
+                  Driver Rating
+                </p>
+                <p
+                  class="text-3xl font-black text-slate-900 dark:text-white mt-1"
+                >
+                  4.9
+                </p>
+              </div>
+            </div>
+          </section>
+          <!-- Active Booking -->
+          <section class="mb-10">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white">
+                Active Booking
+              </h3>
+              <a
+                class="text-primary text-sm font-semibold hover:underline"
+                href="#"
+                >See all rentals</a
+              >
+            </div>
+            <div
+              class="group relative overflow-hidden bg-slate-900 rounded-lg shadow-2xl"
+            >
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/40 to-transparent z-10"
+              ></div>
+              <img
+                class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-60"
+                data-alt="Front view of a silver Porsche 911"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF17gS-mWBHXyN7obcVG-NrTzCzURsVfXGIltVwbyoMTJTSxEMZAb-LhqJct-04_NNJdW4aH-FtzDJTwLeHYBknSrwbF1g2TZzCQWn00wwN5dUMVEtxSoMJZlOlkqES6BBi5j864MAIGGLQKBN8BopIkrvn2gNuQ4Q-VV9kHZZTgUkDSyXkJAFg1nKW-Swx8XV3ud_Q7xa4pzOxyuFyrbY0pdYJmH294Jiislm7uWPhGfhm-_y4Crupftc010J5yC0RkjYNqsvYII"
+              />
+              <div
+                class="relative z-20 p-8 md:p-12 flex flex-col md:flex-row md:items-end justify-between gap-8"
+              >
+                <div class="space-y-4">
+                  <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30"
+                  >
+                    <span
+                      class="w-2 h-2 bg-primary rounded-full animate-pulse"
+                    ></span>
+                    <span
+                      class="text-primary text-[10px] font-bold uppercase tracking-widest"
+                      >In Progress</span
+                    >
+                  </div>
+                  <div>
+                    <h4 class="text-3xl font-black text-white leading-tight">
+                      Porsche 911 Carrera S
+                    </h4>
+                    <p class="text-slate-300 mt-2 flex items-center gap-2">
+                      <span class="material-symbols-outlined text-sm"
+                        >location_on</span
+                      >
+                      San Francisco International Airport
+                    </p>
+                  </div>
+                  <div class="flex gap-8 pt-4">
+                    <div>
+                      <p
+                        class="text-slate-400 text-xs uppercase tracking-widest font-bold"
+                      >
+                        Pick-up
+                      </p>
+                      <p class="text-white font-medium">Oct 12, 10:00 AM</p>
+                    </div>
+                    <div class="w-px h-8 bg-slate-700"></div>
+                    <div>
+                      <p
+                        class="text-slate-400 text-xs uppercase tracking-widest font-bold"
+                      >
+                        Drop-off
+                      </p>
+                      <p class="text-white font-medium">Oct 15, 12:00 PM</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                  <button
+                    class="px-8 py-3 bg-white text-slate-900 font-bold rounded-xl hover:bg-slate-100 transition-all flex items-center justify-center gap-2"
+                  >
+                    View Details
+                  </button>
+                  <button
+                    class="px-8 py-3 bg-primary/20 backdrop-blur-md text-primary border border-primary/30 font-bold rounded-xl hover:bg-primary/30 transition-all flex items-center justify-center gap-2"
+                  >
+                    <span class="material-symbols-outlined text-[20px]"
+                      >tune</span
+                    >
+                    Manage
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Booking History Table -->
+          <section>
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white">
+                Recent Trips
+              </h3>
+              <button
+                class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"
+              >
+                <span class="material-symbols-outlined">filter_list</span>
+              </button>
+            </div>
+            <div
+              class="bg-white/40 dark:bg-slate-800/20 backdrop-blur-xl border border-white/20 dark:border-primary/5 rounded-lg overflow-hidden shadow-sm"
+            >
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="border-b border-slate-200 dark:border-primary/10">
+                    <th
+                      class="px-6 py-4 text-xs uppercase tracking-widest font-black text-slate-400"
+                    >
+                      Car Model
+                    </th>
+                    <th
+                      class="px-6 py-4 text-xs uppercase tracking-widest font-black text-slate-400"
+                    >
+                      Date
+                    </th>
+                    <th
+                      class="px-6 py-4 text-xs uppercase tracking-widest font-black text-slate-400"
+                    >
+                      Amount
+                    </th>
+                    <th
+                      class="px-6 py-4 text-xs uppercase tracking-widest font-black text-slate-400"
+                    >
+                      Status
+                    </th>
+                    <th
+                      class="px-6 py-4 text-xs uppercase tracking-widest font-black text-slate-400"
+                    >
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 dark:divide-primary/5">
+                  <tr
+                    class="hover:bg-slate-50 dark:hover:bg-primary/5 transition-colors group"
+                  >
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-4">
+                        <div
+                          class="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-lg overflow-hidden"
+                        >
+                          <img
+                            class="w-full h-full object-cover"
+                            data-alt="BMW luxury sedan thumbnail"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpLxSAqowjih4WuESBsfkVEH1ewAqyHdQoUfA4vvUOmUhrQC3dj5qri47DT7TRhlbdEFULFpRL6Y1RUeHAGNXxATl27YzgujCqEJU2g9qbau9nMy5b05VGNWxs_dl8gLeO9VcIX7jomSKDPja1Bkfb7jX58dLTc3F78NeSn6t84gp_0JZF4nTZHe6ldWcM3JI7vJHaSOdY7cCkbp7NaEvAqQDBFHyiStAkAC6gH_ZnSeC8eimASt_658JVHCojKll6J1OfGuqyze0"
+                          />
+                        </div>
+                        <div>
+                          <p class="font-bold text-slate-900 dark:text-white">
+                            BMW M4 Competition
+                          </p>
+                          <p class="text-xs text-slate-500">Premium Sport</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td
+                      class="px-6 py-4 text-sm font-medium text-slate-600 dark:text-slate-300"
+                    >
+                      Sept 28 - Sept 30, 2023
+                    </td>
+                    <td
+                      class="px-6 py-4 text-sm font-bold text-slate-900 dark:text-white"
+                    >
+                      ₹840.00
+                    </td>
+                    <td class="px-6 py-4">
+                      <span
+                        class="px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20"
+                        >Completed</span
+                      >
+                    </td>
+                    <td class="px-6 py-4">
+                      <button
+                        class="p-2 text-slate-400 hover:text-primary transition-colors"
+                      >
+                        <span class="material-symbols-outlined"
+                          >receipt_long</span
+                        >
+                      </button>
+                    </td>
+                  </tr>
+                  <tr
+                    class="hover:bg-slate-50 dark:hover:bg-primary/5 transition-colors"
+                  >
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-4">
+                        <div
+                          class="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-lg overflow-hidden"
+                        >
+                          <img
+                            class="w-full h-full object-cover"
+                            data-alt="Tesla Model S luxury interior"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6sVB3mdyR2bXZLqGpRULOYljYw8OqHp1u2-CySXUfholEZriRCqfsTRFuFTQz9f_7uUUeN3BaLJcKOAhQV6ou0tSxU0uuxxfArTMvgd4NeI42fO5WgH9TihlLogE5etdGyfTOtE30Ya5s8S7Yw2A5v3R9KDN4AARtSqnfSss-vEvvoq2e26LKmullinYL2wNuD1YgWCMFFl9PW2GcTuWQUysy3zDECx_zPb533zIgytl7NsihhUVFVbeO8KWrHLauktyhEbSZyvM"
+                          />
+                        </div>
+                        <div>
+                          <p class="font-bold text-slate-900 dark:text-white">
+                            Tesla Model S Plaid
+                          </p>
+                          <p class="text-xs text-slate-500">Electric Luxury</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td
+                      class="px-6 py-4 text-sm font-medium text-slate-600 dark:text-slate-300"
+                    >
+                      Sept 15 - Sept 18, 2023
+                    </td>
+                    <td
+                      class="px-6 py-4 text-sm font-bold text-slate-900 dark:text-white"
+                    >
+                      ₹1,120.00
+                    </td>
+                    <td class="px-6 py-4">
+                      <span
+                        class="px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20"
+                        >Completed</span
+                      >
+                    </td>
+                    <td class="px-6 py-4">
+                      <button
+                        class="p-2 text-slate-400 hover:text-primary transition-colors"
+                      >
+                        <span class="material-symbols-outlined"
+                          >receipt_long</span
+                        >
+                      </button>
+                    </td>
+                  </tr>
+                  <tr
+                    class="hover:bg-slate-50 dark:hover:bg-primary/5 transition-colors"
+                  >
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-4">
+                        <div
+                          class="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-lg overflow-hidden"
+                        >
+                          <img
+                            class="w-full h-full object-cover"
+                            data-alt="Audi Q8 SUV thumbnail"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiT-f_7ZpaOpkrLHHENP9HlJrdlA3j9m3o8yVX2OeR6wY0BUgRquC2PQ81pYk7aMNedoFuxYJ41R3C-xJ3wDgQEXs_JioYrMsoie4O1uhp8OgZQlpAfP2ESQVPIo07Alij4vP2Fuq-qT2-NFtybKIXIAbpcVnh__8UesyGgrPDlf8HWmBjEF4JmFuTTLc2D86GtookJEEcmKR7gcMgtfFJuw9ts1Y9cl_BcWoPWrgwOfIJZ3U0pA2lqoGWNtAW-TBW9T3eOoKiNvU"
+                          />
+                        </div>
+                        <div>
+                          <p class="font-bold text-slate-900 dark:text-white">
+                            Audi RS Q8
+                          </p>
+                          <p class="text-xs text-slate-500">Luxury SUV</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td
+                      class="px-6 py-4 text-sm font-medium text-slate-600 dark:text-slate-300"
+                    >
+                      Aug 22 - Aug 23, 2023
+                    </td>
+                    <td
+                      class="px-6 py-4 text-sm font-bold text-slate-900 dark:text-white"
+                    >
+                      ₹450.00
+                    </td>
+                    <td class="px-6 py-4">
+                      <span
+                        class="px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full bg-rose-500/10 text-rose-500 border border-rose-500/20"
+                        >Cancelled</span
+                      >
+                    </td>
+                    <td class="px-6 py-4">
+                      <button
+                        class="p-2 text-slate-400 hover:text-primary transition-colors"
+                      >
+                        <span class="material-symbols-outlined"
+                          >receipt_long</span
+                        >
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

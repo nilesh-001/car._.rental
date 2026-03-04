@@ -101,6 +101,12 @@
               href="contact-us.html"
               >Contact</a
             >
+            <a
+            class="text-sm font-semibold hover:text-primary transition-colors"
+            href="myrentals.html"
+          >
+            My Rentals
+          </a>
           </nav>
           <a
             href="login.html"
@@ -123,7 +129,7 @@
                   <label
                     class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4 block"
                   >
-                    Price Range ($/day)
+                    Price Range (₹/day)
                   </label>
 
                   <!-- MIN PRICE -->
@@ -152,8 +158,8 @@
 
                   <!-- VALUES DISPLAY -->
                   <div class="flex justify-between mt-3 text-xs font-semibold">
-                    <span id="minPriceValue">$0</span>
-                    <span id="maxPriceValue">$1000</span>
+                    <span id="minPriceValue">₹0</span>
+                    <span id="maxPriceValue">₹1000</span>
                   </div>
                 </div>
                 <div>
@@ -256,6 +262,13 @@
                     >Transmission</label
                   >
                   <div class="flex gap-2">
+                    <button
+                      data-value="All"
+                      class="transmission-btn transmission-active bg-primary text-background-dark"
+                      onclick="selectTransmission(this)"
+                    >
+                      All
+                    </button>
                     <button
                       data-value="Automatic"
                       class="transmission-btn"
@@ -476,7 +489,6 @@
       </footer>
     </div>
 
-    <script src="cars.js"></script>
     <script src="renderCars.js"></script>
   </body>
 </html>

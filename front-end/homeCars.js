@@ -1,17 +1,28 @@
-const homeContainer =
-  document.getElementById("homeCars");
+const homeContainer = document.getElementById("homeCars");
 
+let cars = [];
 let selectedCategory = "Luxury";
+
+/* Load cars from backend */
+async function loadCars() {
+  try {
+    const res = await fetch("http://localhost:4044/api/cars");
+    cars = await res.json();
+
+    renderHomeCars();
+  } catch (err) {
+    console.error("Error loading cars:", err);
+  }
+}
 
 /* render cars */
 function renderHomeCars() {
 
   homeContainer.innerHTML = "";
 
-  const filtered =
-    cars.filter(car =>
-      car.category === selectedCategory
-    ).slice(0,3);
+  const filtered = cars
+    .filter(car => car.category === selectedCategory)
+    .slice(0, 3);
 
   filtered.forEach(car => {
 
@@ -30,7 +41,7 @@ function renderHomeCars() {
             $${car.price}/day
           </p>
 
-          <a href="booking.html?id=${car.id}"
+          <a href="booking.html?id=${car._id}"
           class="block text-center w-full bg-white/5 hover:bg-primary hover:text-background-dark py-3 rounded-lg font-bold mt-4">
           Rent Now
           </a>
@@ -42,25 +53,21 @@ function renderHomeCars() {
 }
 
 /* category buttons */
-document
-.querySelectorAll(".fleet-btn")
-.forEach(btn => {
+document.querySelectorAll(".fleet-btn").forEach(btn => {
 
   btn.onclick = () => {
 
-    document
-      .querySelectorAll(".fleet-btn")
-      .forEach(b => {
+    document.querySelectorAll(".fleet-btn").forEach(b => {
 
-        b.classList.remove(
-          "bg-primary",
-          "text-background-dark"
-        );
+      b.classList.remove(
+        "bg-primary",
+        "text-background-dark"
+      );
 
-        b.classList.add(
-          "text-slate-400"
-        );
-      });
+      b.classList.add(
+        "text-slate-400"
+      );
+    });
 
     btn.classList.add(
       "bg-primary",
@@ -71,11 +78,11 @@ document
       "text-slate-400"
     );
 
-    selectedCategory =
-      btn.dataset.category;
+    selectedCategory = btn.dataset.category;
 
     renderHomeCars();
   };
 });
 
-renderHomeCars();
+/* start loading cars */
+loadCars();

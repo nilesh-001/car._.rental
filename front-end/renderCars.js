@@ -1,4 +1,5 @@
-let filteredCars = [...cars];
+let cars = [];
+let filteredCars = [];
 let currentPage = 1;
 const carsPerPage = 6;
 
@@ -33,9 +34,9 @@ function displayCars(page) {
 
         <div class="p-5">
           <h3 class="text-lg font-bold">${car.name}</h3>
-          <p class="text-primary font-black">$${car.price}/day</p>
+          <p class="text-primary font-black">₹${car.price}/day</p>
 
-          <a href="booking.html?id=${car.id}"
+          <a href="booking.html?id=${car._id}"
           class="block text-center w-full bg-white/5 hover:bg-primary hover:text-background-dark py-3 rounded-lg font-bold mt-4">
           Rent Now
           </a>
@@ -58,9 +59,9 @@ function updatePriceFilter() {
     [minPrice, maxPrice] = [maxPrice, minPrice];
   }
 
-  document.getElementById("minPriceValue").innerText = `$${minPrice}`;
+  document.getElementById("minPriceValue").innerText = `₹${minPrice}`;
 
-  document.getElementById("maxPriceValue").innerText = `$${maxPrice}`;
+  document.getElementById("maxPriceValue").innerText = `₹${maxPrice}`;
 
   applyFilters();
 }
@@ -72,8 +73,8 @@ function clearFilters() {
   document.getElementById("minPrice").value = 0;
   document.getElementById("maxPrice").value = 1000;
 
-  document.getElementById("minPriceValue").innerText = "$0";
-  document.getElementById("maxPriceValue").innerText = "$1000";
+  document.getElementById("minPriceValue").innerText = "₹0";
+  document.getElementById("maxPriceValue").innerText = "₹1000";
 
   // reset category
   document.querySelectorAll(".category-btn").forEach((btn) => {
@@ -146,7 +147,7 @@ function selectCategory(btn) {
 }
 
 function applyFilters() {
-  const selectedType =
+  const selectedCategory =
     document.querySelector(".category-active")?.dataset.value;
 
   const selectedFuels = [
@@ -159,16 +160,18 @@ function applyFilters() {
   filteredCars = cars.filter((car) => {
     let match = true;
 
-    if (selectedType && selectedType !== "All") {
-      match = match && car.type === selectedType;
+    if (selectedCategory && selectedCategory !== "All") {
+      match = match && car.category === selectedCategory;
     }
 
     if (selectedFuels.length > 0) {
       match = match && selectedFuels.includes(car.fuel);
     }
 
-    if (selectedTransmission) {
-      match = match && car.transmission === selectedTransmission;
+    if (selectedTransmission && selectedTransmission !== "All") {
+      match =
+        match &&
+        car.transmission.toLowerCase() === selectedTransmission.toLowerCase();
     }
 
     if (car.price < minPrice || car.price > maxPrice) {
@@ -252,5 +255,18 @@ function changePage(page) {
   });
 }
 
-displayCars(currentPage);
-renderPagination();
+async function loadCars() {
+  try {
+    const res = await fetch("http://localhost:4044/api/cars");
+    cars = await res.json();
+
+    filteredCars = [...cars];
+
+    displayCars(currentPage);
+    renderPagination();
+  } catch (err) {
+    console.error("Error loading cars:", err);
+  }
+}
+
+loadCars();
