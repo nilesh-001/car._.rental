@@ -9,6 +9,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use("/images", express.static(path.join(__dirname, "../Images")));
+
 mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("MongoDB Connected"))
 .catch(err => console.log(err));
