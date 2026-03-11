@@ -4,7 +4,7 @@ let currentPage = 1;
 const carsPerPage = 6;
 
 let minPrice = 0;
-let maxPrice = 1000;
+let maxPrice = 95000;
 
 let startPage = 1;
 const visiblePages = 5;
@@ -36,10 +36,10 @@ function displayCars(page) {
           <h3 class="text-lg font-bold">${car.name}</h3>
           <p class="text-primary font-black">₹${car.price}/day</p>
 
-          <a href="booking.html?id=${car._id}"
+          <button onclick="handleRentNow('${car._id}')"
           class="block text-center w-full bg-white/5 hover:bg-primary hover:text-background-dark py-3 rounded-lg font-bold mt-4">
           Rent Now
-          </a>
+          </button>
         </div>
 
       </div>
@@ -51,16 +51,13 @@ function displayCars(page) {
 
 function updatePriceFilter() {
   minPrice = parseInt(document.getElementById("minPrice").value);
-
   maxPrice = parseInt(document.getElementById("maxPrice").value);
 
-  // prevent overlap
   if (minPrice > maxPrice) {
     [minPrice, maxPrice] = [maxPrice, minPrice];
   }
 
   document.getElementById("minPriceValue").innerText = `₹${minPrice}`;
-
   document.getElementById("maxPriceValue").innerText = `₹${maxPrice}`;
 
   applyFilters();
@@ -68,15 +65,14 @@ function updatePriceFilter() {
 
 function clearFilters() {
   minPrice = 0;
-  maxPrice = 1000;
+  maxPrice = 95000;
 
   document.getElementById("minPrice").value = 0;
-  document.getElementById("maxPrice").value = 1000;
+  document.getElementById("maxPrice").value = 95000;
 
   document.getElementById("minPriceValue").innerText = "₹0";
-  document.getElementById("maxPriceValue").innerText = "₹1000";
+  document.getElementById("maxPriceValue").innerText = "₹95000";
 
-  // reset category
   document.querySelectorAll(".category-btn").forEach((btn) => {
     btn.className =
       "category-btn text-xs font-semibold py-2 px-3 rounded bg-primary/5 hover:bg-primary/10 border border-primary/10";
@@ -87,17 +83,15 @@ function clearFilters() {
   allBtn.className =
     "category-btn category-active text-xs font-semibold py-2 px-3 rounded bg-primary text-background-dark border border-primary";
 
-  // reset fuel
   document
     .querySelectorAll(".fuel-filter")
     .forEach((cb) => (cb.checked = false));
 
-  // reset transmission
   document.querySelectorAll(".transmission-btn").forEach((btn) => {
     btn.classList.remove(
       "transmission-active",
       "bg-primary",
-      "text-background-dark",
+      "text-background-dark"
     );
   });
 
@@ -115,7 +109,7 @@ function selectTransmission(btn) {
     b.classList.remove(
       "transmission-active",
       "bg-primary",
-      "text-background-dark",
+      "text-background-dark"
     );
 
     b.classList.add("bg-primary/5");
@@ -124,7 +118,7 @@ function selectTransmission(btn) {
   btn.classList.add(
     "transmission-active",
     "bg-primary",
-    "text-background-dark",
+    "text-background-dark"
   );
 
   btn.classList.remove("bg-primary/5");
@@ -154,8 +148,8 @@ function applyFilters() {
     ...document.querySelectorAll(".fuel-filter:checked"),
   ].map((el) => el.value);
 
-  const selectedTransmission = document.querySelector(".transmission-active")
-    ?.dataset.value;
+  const selectedTransmission =
+    document.querySelector(".transmission-active")?.dataset.value;
 
   filteredCars = cars.filter((car) => {
     let match = true;
@@ -174,7 +168,9 @@ function applyFilters() {
         car.transmission.toLowerCase() === selectedTransmission.toLowerCase();
     }
 
-    if (car.price < minPrice || car.price > maxPrice) {
+    const price = Number(car.price);
+
+    if (price < minPrice || price > maxPrice) {
       match = false;
     }
 
@@ -184,9 +180,9 @@ function applyFilters() {
   const sortValue = document.getElementById("sortSelect").value;
 
   if (sortValue === "priceLow") {
-    filteredCars.sort((a, b) => a.price - b.price);
+    filteredCars.sort((a, b) => Number(a.price) - Number(b.price));
   } else if (sortValue === "priceHigh") {
-    filteredCars.sort((a, b) => b.price - a.price);
+    filteredCars.sort((a, b) => Number(b.price) - Number(a.price));
   } else if (sortValue === "rating") {
     filteredCars.sort((a, b) => b.rating - a.rating);
   }
@@ -268,5 +264,34 @@ async function loadCars() {
     console.error("Error loading cars:", err);
   }
 }
+
+const loginModal = document.getElementById("loginRequiredModal");
+const cancelLoginModal = document.getElementById("cancelLoginModal");
+const goToLogin = document.getElementById("goToLogin");
+
+let selectedCarId = null;
+
+function handleRentNow(carId) {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    selectedCarId = carId;
+
+    loginModal.classList.remove("hidden");
+    loginModal.classList.add("flex");
+
+    return;
+  }
+
+  window.location.href = `booking.html?id=${carId}`;
+}
+
+cancelLoginModal.addEventListener("click", () => {
+  loginModal.classList.add("hidden");
+});
+
+goToLogin.addEventListener("click", () => {
+  window.location.href = "login.html";
+});
 
 loadCars();

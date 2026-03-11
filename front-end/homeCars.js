@@ -17,15 +17,13 @@ async function loadCars() {
 
 /* render cars */
 function renderHomeCars() {
-
   homeContainer.innerHTML = "";
 
   const filtered = cars
-    .filter(car => car.category === selectedCategory)
+    .filter((car) => car.category === selectedCategory)
     .slice(0, 3);
 
-  filtered.forEach(car => {
-
+  filtered.forEach((car) => {
     homeContainer.innerHTML += `
       <div class="glass-card rounded-xl overflow-hidden">
 
@@ -41,9 +39,10 @@ function renderHomeCars() {
             ₹${car.price}/day
           </p>
 
-          <a href="booking.html?id=${car._id}"
-          class="block text-center w-full bg-white/5 hover:bg-primary hover:text-background-dark py-3 rounded-lg font-bold mt-4">
-          Rent Now
+          <a
+            onclick="handleRentNow('${car._id}')"
+            class="block text-center w-full bg-white/5 hover:bg-primary hover:text-background-dark py-3 rounded-lg font-bold mt-4">
+            Rent Now
           </a>
         </div>
 
@@ -53,30 +52,17 @@ function renderHomeCars() {
 }
 
 /* category buttons */
-document.querySelectorAll(".fleet-btn").forEach(btn => {
-
+document.querySelectorAll(".fleet-btn").forEach((btn) => {
   btn.onclick = () => {
+    document.querySelectorAll(".fleet-btn").forEach((b) => {
+      b.classList.remove("bg-primary", "text-background-dark");
 
-    document.querySelectorAll(".fleet-btn").forEach(b => {
-
-      b.classList.remove(
-        "bg-primary",
-        "text-background-dark"
-      );
-
-      b.classList.add(
-        "text-slate-400"
-      );
+      b.classList.add("text-slate-400");
     });
 
-    btn.classList.add(
-      "bg-primary",
-      "text-background-dark"
-    );
+    btn.classList.add("bg-primary", "text-background-dark");
 
-    btn.classList.remove(
-      "text-slate-400"
-    );
+    btn.classList.remove("text-slate-400");
 
     selectedCategory = btn.dataset.category;
 
