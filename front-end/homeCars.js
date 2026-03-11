@@ -6,7 +6,7 @@ let selectedCategory = "Luxury";
 /* Load cars from backend */
 async function loadCars() {
   try {
-    const res = await fetch("http://localhost:4044/api/cars");
+    const res = await fetch("/api/cars");
     cars = await res.json();
 
     renderHomeCars();
