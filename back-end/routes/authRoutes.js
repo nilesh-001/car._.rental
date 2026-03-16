@@ -85,29 +85,54 @@ router.post("/login", async (req, res) => {
 });
 
 // TEST EMAIL
-router.get("/test-email", async (req, res) => {
+// router.get("/test-email", async (req, res) => {
 
+//   try {
+
+//     const info = await transporter.sendMail({
+//       from: process.env.EMAIL_USER,
+//       to: "290905nilesh@gmail.com",
+//       subject: "Velocita Email Test",
+//       text: "If you received this email, Nodemailer is working correctly!"
+//     });
+
+//     console.log("Email info:", info);
+
+//     res.send("Email sent successfully");
+
+//   } catch (error) {
+
+//     console.error(error);
+//     res.status(500).send("Email failed");
+
+//   }
+
+// });
+router.get("/test-email", async (req, res) => {
   try {
+
+    console.log("Testing email...");
 
     const info = await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: "290905nilesh@gmail.com",
+      to: process.env.EMAIL_USER,
       subject: "Velocita Email Test",
-      text: "If you received this email, Nodemailer is working correctly!"
+      text: "Email test successful"
     });
 
-    console.log("Email info:", info);
+    console.log("Email sent:", info);
 
     res.send("Email sent successfully");
 
   } catch (error) {
 
-    console.error(error);
-    res.status(500).send("Email failed");
+    console.error("Email error:", error);
+
+    res.status(500).send(error.message);
 
   }
-
 });
+
 
 // SEND OTP
 router.post("/send-otp", async (req, res) => {
